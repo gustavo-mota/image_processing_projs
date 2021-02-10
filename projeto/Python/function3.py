@@ -92,7 +92,20 @@ def filtro_conv(filter, tamanho):
 		filtro = np.array([[-1,-1,-1],
 			[-1,8,-1],
 			[-1,-1,-1]])
-			
+	elif filter == "Sobel":
+		filtro = (
+			np.array([
+			[-1, 0, 1],
+			[-2, 0, 2],
+			[-1, 0, 1]
+					]),
+			np.array([
+				[-1, -2, -1],
+				[0, 0, ],
+				[1, 2, 1]
+			])
+			)
+		divisor = 1
 	return (filtro, divisor)
 
 
