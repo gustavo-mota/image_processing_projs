@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import cv2
 
 ##############
-def mostrar_img(img, title = None,color = None):
+def mostrar_img(img, title = None,color = None, normalize=None):
 	# Responsável por mostrar a imagem
 	# O título deve ser o nome da imagem?
 	# Color= padrão de cor, deve ser normatizado
@@ -12,9 +12,9 @@ def mostrar_img(img, title = None,color = None):
     if title != None:
     	plt.title(title)
     if color == "cinza":
-        plt.imshow(img, cmap = "gray", vmin = 0,vmax = 255)
+        plt.imshow(img, cmap = "gray",norm=normalize vmin = 0,vmax = 255)
     else:
-        plt.imshow(img)
+        plt.imshow(img, norm=normalize)
     plt.show()
 
 def mostrar_img2(img1, img2, normatizado = False):
@@ -96,9 +96,9 @@ def filtro_linear_multiplo(img, c_fatores, dominio):
 	return img2
 
 
-path = "C:\\Users\\mateus\\Desktop\\processamento_de_imagens\\imagens\\"
-path_image = "49.jpg"
-imagem = import_img(path+path_image, "RGB")
+#path = "C:\\Users\\mateus\\Desktop\\processamento_de_imagens\\imagens\\"
+#path_image = "49.jpg"
+#imagem = import_img(path+path_image, "RGB")
 
 #mostrar_img(imagem)
 #imagem2 = negativo(imagem)
