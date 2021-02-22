@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
-from skimage import img_as_float
 
-<<<<<<< HEAD
 """
 Primeiro conjunto de funções:
 
@@ -35,7 +33,7 @@ def mostrar_img(img, title = None,color = None, normalize=None):
     if title != None:
     	plt.title(title)
     if color == "cinza":
-        plt.imshow(img, cmap = "gray",norm=normalize vmin = 0,vmax = 255)
+        plt.imshow(img, cmap = "gray",norm=normalize, vmin = 0,vmax = 255)
     else:
         plt.imshow(img, norm=normalize)
     plt.show()
