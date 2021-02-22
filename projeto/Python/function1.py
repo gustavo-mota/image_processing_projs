@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import cv2
 from skimage import img_as_float
 
+<<<<<<< HEAD
 """
 Primeiro conjunto de funções:
 
@@ -22,7 +23,10 @@ retorna um pixel após ser submetido a uma escala logarítmica
 valor do pixel e n é o fator gama.
 - filtro_linear_binario(img, fator linear): binarização, diferen para imagens coloridas
 """
-def mostrar_img(img, title = None,color = None):
+
+
+##############
+def mostrar_img(img, title = None,color = None, normalize=None):
 	# Responsável por mostrar a imagem
 	# O título deve ser o nome da imagem?
 	# Color= padrão de cor, deve ser normatizado
@@ -31,9 +35,9 @@ def mostrar_img(img, title = None,color = None):
     if title != None:
     	plt.title(title)
     if color == "cinza":
-        plt.imshow(img, cmap = "gray", vmin = 0,vmax = 255)
+        plt.imshow(img, cmap = "gray",norm=normalize vmin = 0,vmax = 255)
     else:
-        plt.imshow(img)
+        plt.imshow(img, norm=normalize)
     plt.show()
 
 def mostrar_img2(img1, img2, normatizado = False):
@@ -307,34 +311,3 @@ def linear_partes(img, pontos, funcoes, cor, f_log, f_g):
 	return img2
 
 
-
-
-path = "C:\\Users\\mateus\\Desktop\\image_processig\\imagens\\"
-path_image = "276.jpg"
-#imagem = import_img(path+path_image, "cinza", True)
-#mostrar_img(imagem)
-
-#imagem2 = RGB2CMY(imagem)
-#mostrar_img(imagem2)
-#imagem2 = linear_partes(imagem2, [[0,0.3], [1,1]],  ["l","l"], "r")
-#imagem2 = linear_partes(imagem2, [[0,0.3], [1,1]], ["l","l"], "g")
-#imagem2 = linear_partes(imagem2, [[0,0.3], [1,1]], ["l","l"], "b")
-#imagem2 = RGB2CMY(np.int_(imagem2*255))
-#mostrar_img2(imagem, imagem2)
-
-#imagem2 = negativo(imagem) - ok
-
-#imagem2 = logaritmo(imagem, 1)
-
-#imagem2 = correcao_gama(imagem, 1, 3) - ok
-
-
-
-#imagem2 = limiarizacao(imagem, 100)
-#imagem2 = filtro_linear_simples(imagem, 2, -80)
-#imagem2 = filtro_linear_multiplo(imagem, [[0.35, 0],[0.36, 1], [0.5, 1], [1, 0]])
-#mostrar_img2(imagem, imagem2, True)
-
-#filtro_linear_partes(imagem, 2,2)
-
-#mostrar_img2(imagem, imagem2)
