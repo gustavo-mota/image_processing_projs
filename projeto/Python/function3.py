@@ -2,7 +2,6 @@ from function1 import mostrar_img
 from function1 import import_img
 from function1 import mostrar_img2
 
-from skimage import img_as_float
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2

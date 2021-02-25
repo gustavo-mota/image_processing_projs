@@ -19,6 +19,7 @@ class App_I:
     	#self.imagem = self.import_img(path+path_image, "RGB", True)
 
 ##############################################################################
+
     def import_img1(self, path, root, padrao_cor = None, normalizacao = True):
         self.opcao_1 = Frame()  
         self.opcao_1.pack()
@@ -64,11 +65,30 @@ class App_I:
             imagem = imagem.resize((500, 500))
         img2 =  ImageTk.PhotoImage(imagem)
 
+    def import_img(self, path, root, padrao_cor = None, normalizacao = True):
+    	img = cv2.imread(path)
+    	if padrao_cor == "cinza":
+    		img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    		img = RGB2GRAY(img, "Med")
+    	elif padrao_cor == "RGB":
+    		img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+
         self.imagem2 = Label(root, text = "adicionando", image = img2)
         self.imagem2.image = img2
         self.imagem2.pack()
 
         root.title(path2)
+
+    	self.Canvas(root, width=300, height=300)
+    	image = Image.open(path)
+    	image = image.resize((300,120))
+    	image = ImageTk.PhotoImage(image)
+
+    	self.create_image(0, 0, anchor=NW, image=image)
+    	self.pack()
+
+    	#root.configure(background = )
 
     def modificar_imagem(self, img):
         self.opcao_1 = Frame()
@@ -924,13 +944,14 @@ class App_I:
   	
 
 
-path = "C:\\Users\\mateus\\Desktop\\image_processig\\imagens\\"
-path_image = "teste.tif"
+path = "E:\\Documentos\\GitHub\\image_processing2\\projeto\\imagens\\"
+path_image = "Fig0314(a)(100-dollars).tif"
 
 root = Tk()
 root.title("Funções teste")
 root.geometry("640x400")
-root.configure(background = "#dde")
+root.configure(background = "#dde") # !!!
+
 App_I(root)
 
 def funcao():
@@ -938,9 +959,15 @@ def funcao():
 
 BarraDeMenu = Menu(root)
 Menu_Arquivo = Menu(BarraDeMenu, tearoff = 0)
+<<<<<<< HEAD
 Menu_Arquivo.add_command(label = "Abrir imagem", command = lambda: App_I.import_img1(App_I, path+path_image, root, "RGB", True))
 Menu_Arquivo.add_command(label = "Salvar imagem", command = lambda: App_I.mostrar_imagem(App_I, App_I.imagem))
 Menu_Arquivo.add_command(label = "Fechar", command = root.quit)
+=======
+Menu_Arquivo.add_command(label = "abrir imagem", command = lambda: App_I.import_img(App_I, path+path_image, root, "RGB", True))
+Menu_Arquivo.add_command(label = "salvar imagem", command = lambda: App_I.mostrar_imagem(App_I, App_I.imagem))
+Menu_Arquivo.add_command(label = "fechar", command = root.quit)
+>>>>>>> 5bf73684dc9e65d729e9f5564924a1d14198b1eb
 BarraDeMenu.add_cascade(label = "Arquivo", menu = Menu_Arquivo)
 
 Menu_funcoes = Menu(BarraDeMenu, tearoff = 0)

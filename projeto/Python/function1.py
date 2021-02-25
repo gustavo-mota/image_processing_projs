@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
-from skimage import img_as_float
 
 """
 Primeiro conjunto de funções:
