@@ -90,10 +90,10 @@ def HSV_RGB(img):
 
 
 
-#path = "C:\\Users\\mateus\\Desktop\\image_processig\\imagens\\"
-#path_image = "995.jpg"
-#imagem = import_img(path+path_image, "cinza")
-#mostrar_img(imagem)
+path = "C:\\Users\\mateus\\Desktop\\rotulacao\\imagens\\"
+path_image = "531.jpg"
+imagem = import_img(path+path_image, "cinza", False)
+mostrar_img(imagem)
 #imagem_HSV = RGB_HSV(imagem)
 #imagem2 = HSV_RGB(imagem_HSV)
 #imagem = np.double(imagem)/255

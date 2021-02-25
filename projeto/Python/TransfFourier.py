@@ -66,7 +66,7 @@ def pixel2fourier(coord, img):
     np.nditer.close
     return pixel_s
 
- def frequency2spatial(img):
+def frequency2spatial(img):
     '''
         img: imagem no domínio da frequência
         
@@ -104,12 +104,23 @@ def fourier2pixel(coord, img):
     np.nditer.close
     return pixel_f
 
- def ft_apply(img, filt):
- 	fft_img = np.abs(np.fft.fft2(img))
- 	fft_img = np.fft.fftshift(fft_img)
- 	fft_img *= filt
- 	fft_img = np.fft.ifftshift(fft_img)
- 	fft_img = np.fft.ifft2(fft_img)
+def ft_apply(img, filt):
+    fft_img = np.fft.fft2(img)
+    fft_img = np.fft.fftshift(fft_img)
+    fft_img2 = np.abs(fft_img)
+    mostrar_img(fft_img2)
+    #fft_img *= filt
+    fft_img = np.fft.ifftshift(fft_img)
+    fft_img = np.fft.ifft2(fft_img)
+    mostrar_img(np.abs(fft_img))
 
- 	return fft_img
+    return fft_img
 
+#imagem = import_img("C:\\Users\\mateus\\Desktop\\rotulacao\\imagens\\imgf1.jpg", "RGB", True)
+imagem = cv2.imread("C:\\Users\\mateus\\Desktop\\rotulacao\\imagens\\imgf1.jpg")
+imagem = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
+mostrar_img(imagem, 1)
+ft_apply(imagem, 1)
+
+imagem_fourier = spatial2frequency(imagem)
+mostrar_img(np.abs(imagem_fourier))

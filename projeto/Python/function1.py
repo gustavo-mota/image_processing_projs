@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import cv2
 from skimage import img_as_float
 
-<<<<<<< HEAD
 """
 Primeiro conjunto de funções:
 
@@ -35,7 +34,7 @@ def mostrar_img(img, title = None,color = None, normalize=None):
     if title != None:
     	plt.title(title)
     if color == "cinza":
-        plt.imshow(img, cmap = "gray",norm=normalize vmin = 0,vmax = 255)
+        plt.imshow(img, cmap = "gray",norm=normalize, vmin = 0,vmax = 255)
     else:
         plt.imshow(img, norm=normalize)
     plt.show()
@@ -220,6 +219,19 @@ def limiarizacao(img, fator_linear):
 
 	return img2
 
+def limiarizacao_cor(img, fator_linear, cor):
+	fator_linear = fator_linear/255
+	img2 = img.copy()
+
+	for i in range(img.shape[0]):
+		for j in range(img.shape[1]):
+			if img2[i][j][cor] < fator_linear:
+				img2[i][j][cor] = 0
+			else:
+				img2[i][j][cor] = 1
+
+	return img2
+
 ###################################################################
 def filtro_linear_simples(img, fator_a, fator_b):
 	#img: array da imagem - double (0.0 a 1.0)
@@ -245,6 +257,7 @@ def filtro_linear_multiplo(img, dominio):
 
 	img2 = np.zeros((img.shape[0], img.shape[1], img.shape[2]))
 	for i in range(len(dominio)):
+		coef_a, coef_b = coeficientes_linear(ponto_i, dominio[i])
 		for j in range(img.shape[0]):
 			for k in range(img.shape[1]):
 				for m in range(img.shape[2]):
@@ -277,7 +290,7 @@ def linear_partes(img, pontos, funcoes, cor, f_log, f_g):
 		color = 0
 	elif cor == "g":
 		color = 1
-	elif cor == "b" or color == "v":
+	elif cor == "b" or cor == "v":
 		color = 2
 
 	for i in range(len(pontos)):

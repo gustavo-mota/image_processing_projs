@@ -146,6 +146,51 @@ def sepia(img):
 
 	return (img_cinza)
 
+def variacao_matiz(img, variacao):
+
+	img2 = img.copy()
+
+	for i in range(img.shape[0]):
+		for j in range(img.shape[1]):
+
+			img2[i][j][0] = img[i][j][0] + variacao
+			if img2[i][j][0] >= 360:
+				img2[i][j][0] -= 360
+			elif img[i][j][0] < 0:
+				img2[i][j][0] += 360
+
+	return img2
+
+def variacao_intensidade(img, variacao):
+
+	img2 = img.copy()
+
+	for i in range(img.shape[0]):
+		for j in range(img.shape[1]):
+
+			img2[i][j][1] = img[i][j][1] + img[i][j][1]*variacao/100
+			if img2[i][j][1] >= 1:
+				img2[i][j][1] = 1
+			elif img[i][j][1] < 0:
+				img2[i][j][1] = 0
+
+	return img2
+
+def variacao_luminancia(img, variacao):
+
+	img2 = img.copy()
+
+	for i in range(img.shape[0]):
+		for j in range(img.shape[1]):
+
+			img2[i][j][2] = img[i][j][2] + img[i][j][2]*variacao/100
+			if img2[i][j][2] >= 1:
+				img2[i][j][2] = 1
+			elif img[i][j][2] < 0:
+				img2[i][j][2] = 0
+				
+	return img2
+
 
 #path = "C:\\Users\\mateus\\Desktop\\image_processig\\imagens\\"
 #path_image = "348.jpg"
